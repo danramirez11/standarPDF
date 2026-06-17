@@ -31,7 +31,7 @@ app.mount(
 )
 
 UPLOAD_FOLDER = "uploads"
-BASE_URL = "http://localhost:8000"
+BASE_URL = "https://standarpdf.onrender.com"
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
