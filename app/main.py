@@ -4,6 +4,7 @@ from app.image_extractor import extract_images
 from app.gemini_service import normalize_document
 from fastapi.staticfiles import StaticFiles
 from app.cleanup import cleanup_old_uploads
+from fastapi.middleware.cors import CORSMiddleware
 
 import shutil
 import os
@@ -28,6 +29,20 @@ app.mount(
     "/uploads",
     StaticFiles(directory="uploads"),
     name="uploads"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+
+    allow_origins=[
+        "http://localhost:5173"
+    ],
+
+    allow_credentials=True,
+
+    allow_methods=["*"],
+
+    allow_headers=["*"],
 )
 
 UPLOAD_FOLDER = "uploads"
